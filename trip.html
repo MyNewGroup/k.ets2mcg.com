@@ -39,6 +39,7 @@
 
 		button {
 			padding: 20px 0px;
+			height: 8vh;
 		}
 
 		div.page {
@@ -221,7 +222,7 @@
 
 			$("#copy").click(() => {
 				const el = document.createElement('textarea');
-				el.value = $("#result").val();
+				el.value = $("#result").val().trim();
 				document.body.appendChild(el);
 				el.select();
 				document.execCommand('copy');
@@ -230,7 +231,7 @@
 
 			$("#process").click(() => {
 				var resultDiv = $("#result");
-				resultDiv.empty();
+				resultDiv.val("");
 				resultDiv.show();
 
 				$("#copy").show();
@@ -242,7 +243,7 @@
 				var buffer = "";
 
 				function appendText() {
-					resultDiv.val(resultDiv.val() + buffer + "\n");
+					resultDiv.val(resultDiv.val() + buffer.trim() + "\n");
 					buffer = "";
 				}
 
