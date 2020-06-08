@@ -191,7 +191,8 @@
 			var text0 = "";
 			text0 = text;
 			for (let v of keywords.keys()) {
-				text0 = text0.replace(v, keywords.get(v));
+				while (text0.includes(v))
+					text0 = text0.replace(v, keywords.get(v));
 			}
 			return text0;
 		}
