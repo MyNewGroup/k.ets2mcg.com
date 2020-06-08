@@ -242,13 +242,8 @@
 				var buffer = "";
 
 				function appendText() {
-					resultDiv.val(resultDiv.val() + buffer);
-					resultDiv.val(resultDiv.val() + " ");
+					resultDiv.val(resultDiv.val() + buffer + "\n");
 					buffer = "";
-				}
-
-				function appendLine() {
-					resultDiv.val(resultDiv.val() + "\n");
 				}
 
 				var lines = text.split('\n');
@@ -257,12 +252,10 @@
 					if (isArtLine(curLine)) {
 						buffer = curLine;
 						appendText();
-						appendLine();
 						continue;
 					} else if (curLine.includes("Notified") || curLine.includes("@everyone")) {
 						buffer = "<@666307984644898826>";
 						appendText();
-						appendLine();
 						continue;
 					} else if (curLine.match(/.*★\s*ETS2MCG [tT][hH][eE] [tT][rR][iI][pP] [oO][nN] (.*[dD][aA][yY])\s*★.*/)) {
 						let dayName = curLine.match(/.*★\s*ETS2MCG [tT][hH][eE] [tT][rR][iI][pP] [oO][nN] (.*[dD][aA][yY])\s*★.*/)[1].toLowerCase();
@@ -283,17 +276,14 @@
 						}
 						buffer = "★ ETS2MCG " + dayName + " 여행 ★";
 						appendText();
-						appendLine();
 						continue;
 					} else if (curLine.includes("ETS2MCG Team Convoy")) {
 						buffer = "★ ETS2MCG 팀 컨보이 ★";
 						appendText();
-						appendLine();
 						continue;
 					} else if (curLine.includes("★") && (curLine.includes("Convoy") || curLine.includes("DLC") || curLine.includes("Trip"))) {
 						buffer = curLine;
 						appendText();
-						appendLine();
 						continue;
 					}
 
@@ -338,7 +328,6 @@
 						curLine = "시간: 22:00";
 						buffer = curLine;
 						appendText();
-						appendLine();
 						break;
 					} else if (curLine.startsWith("- Truck: ")) {
 						curLine = "- 트럭: " + curLine.substring(9);
@@ -351,7 +340,6 @@
 					curLine = translateWords(curLine);
 					buffer = curLine;
 					appendText();
-					appendLine();
 				}
 				if (buffer.length !== 0) append();
 			})
