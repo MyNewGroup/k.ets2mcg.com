@@ -20,6 +20,10 @@
 			display: block;
 		}
 
+		#result {
+			height: 500px;
+		}
+
 		.marginVert {
 			margin: 10px 0px;
 		}
@@ -100,7 +104,8 @@
 		<textarea id="input" class="pageBlock" placeholder="Put trip route text here"></textarea>
 		<button id="process" type="submit" class="marginVert pageBlock">Process!</button>
 		<h2>Result here</h2>
-		<textarea id="result" class="pageBlock" placeholder="Result will be here" readonly></textarea>
+		<textarea id="result" class="pageBlock" style="display: none;" placeholder="Result will be here"
+			readonly></textarea>
 		<button id="copy" type="submit" style="display: none;" class="marginVert pageBlock">Copy!</button>
 	</div>
 	<script>
@@ -211,6 +216,16 @@
 					folder: 'svg',
 					ext: 'svg'
 				};
+			})
+
+
+			$("#copy").click(() => {
+				const el = document.createElement('textarea');
+				el.value = $("#result").val();
+				document.body.appendChild(el);
+				el.select();
+				document.execCommand('copy');
+				document.body.removeChild(el);
 			})
 
 			$("#process").click(() => {
