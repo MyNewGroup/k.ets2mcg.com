@@ -91,6 +91,19 @@
 			}
 		}
 	</style>
+</head>
+
+<body>
+	<div class="page">
+		<h1 class="emojiIncluded">Auto trip translator for MCG 🇰🇷</h1>
+		<h2>Trip Route Text Here</h2>
+		<textarea id="input" class="pageBlock" placeholder="Put trip route text here"></textarea>
+		<button id="process" type="submit" class="marginVert pageBlock">Process!</button>
+		<div id="result" style="display: none;">
+			<h2>Result here</h2>
+
+		</div>
+	</div>
 	<script>
 		const artChars = "▀█";
 		const keywords = new Map();
@@ -177,7 +190,7 @@
 		function translateWords(text) {
 			var text0 = "";
 			text0 = text;
-			for(let v of keywords.keys()) {
+			for (let v of keywords.keys()) {
 				text0 = text0.replace(v, keywords.get(v));
 			}
 			return text0;
@@ -270,12 +283,12 @@
 					if (curLine.startsWith("Date:")) {
 						let date = curLine.substring(5).trim();
 						let dates = date.split(" ");
-						if(dates.length == 3) {
+						if (dates.length == 3) {
 							let year = dates[2];
 							let month = dates[1];
 							let day = dates[0];
 
-							if(day.length == 1) day = "0" + day;
+							if (day.length == 1) day = "0" + day;
 							curLine = "날짜: " + year + "-" + month + "-" + day;
 						} else {
 							curLine = "날짜: " + date;
@@ -314,7 +327,7 @@
 						curLine = "- 트럭: " + curLine.substring(9);
 					} else if (curLine.startsWith("- Trailer: ")) {
 						curLine = "- 트레일러: " + curLine.substring(11);
-					} else if(curLine.includes("Truck") && curLine.includes("Trailer") && curLine.includes("Skin") && curLine.includes("Free")) {
+					} else if (curLine.includes("Truck") && curLine.includes("Trailer") && curLine.includes("Skin") && curLine.includes("Free")) {
 						curLine = "트럭, 트레일러, 스킨: 자유 (MCG Korea 스킨 사용 가능 <#703089691863285821>)";
 					}
 
@@ -328,19 +341,6 @@
 			})
 		})
 	</script>
-</head>
-
-<body>
-	<div class="page">
-		<h1 class="emojiIncluded">Auto trip translator for MCG 🇰🇷</h1>
-		<h2>Trip Route Text Here</h2>
-		<textarea id="input" class="pageBlock" placeholder="Put trip route text here"></textarea>
-		<button id="process" type="submit" class="marginVert pageBlock">Process!</button>
-		<div id="result" style="display: none;">
-			<h2>Result here</h2>
-
-		</div>
-	</div>
 </body>
 
 </html>
