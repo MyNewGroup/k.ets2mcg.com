@@ -236,7 +236,7 @@
 				}
 
 				var lines = text.split('\n');
-				function processLine(i) {
+				for (let i = 0; i < lines.length; i++) {
 					let curLine = lines[i];
 					if (isArtLine(curLine)) {
 						buffer = curLine;
@@ -337,13 +337,6 @@
 					appendText();
 					appendLine();
 				}
-				function d(i) {
-					if (i < lines.length) {
-						processLine(i);
-						setTimeout(() => d(i + 1), 50);
-					}
-				}
-				d(0);
 				if (buffer.length !== 0) append();
 			})
 		})
