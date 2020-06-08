@@ -99,10 +99,9 @@
 		<h2>Trip Route Text Here</h2>
 		<textarea id="input" class="pageBlock" placeholder="Put trip route text here"></textarea>
 		<button id="process" type="submit" class="marginVert pageBlock">Process!</button>
-		<div id="result" style="display: none;">
-			<h2>Result here</h2>
-
-		</div>
+		<h2>Result here</h2>
+		<textarea id="result" class="pageBlock" placeholder="Result will be here" readonly></textarea>
+		<button id="copy" type="submit" style="display: none;" class="marginVert pageBlock">Copy!</button>
 	</div>
 	<script>
 		const artChars = "▀█";
@@ -219,20 +218,22 @@
 				resultDiv.empty();
 				resultDiv.show();
 
+				$("#copy").show();
+
+
 				var text = "";
 				text = $("#input").val().trim();
 
 				var buffer = "";
 
 				function appendText() {
-					let n = $("<div />").text(buffer).addClass("wordElem");
-					resultDiv.append(n);
-					resultDiv.append($("<div />").html("&nbsp;").addClass("wordElem"));
+					resultDiv.val(resultDiv.val() + buffer);
+					resultDiv.val(resultDiv.val() + " ");
 					buffer = "";
 				}
 
 				function appendLine() {
-					resultDiv.append($("<br />"));
+					resultDiv.val(resultDiv.val() + "\n");
 				}
 
 				var lines = text.split('\n');
