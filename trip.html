@@ -296,7 +296,7 @@
 					} else if (curLine.startsWith("Route:")) {
 						curLine = "경로:" + curLine.substring(6);
 					} else if (curLine.startsWith("Start:")) {
-						curLine = "출발:" + curLine.subst ring(6);
+						curLine = "출발:" + curLine.substring(6);
 					} else if (curLine.startsWith("Stop:")) {
 						curLine = "정차:" + curLine.substring(5);
 					} else if (curLine.startsWith("Finish:")) {
