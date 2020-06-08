@@ -250,11 +250,13 @@
 				var lines = text.split('\n');
 				for (let i = 0; i < lines.length; i++) {
 					let curLine = lines[i];
+					if (curLine.startsWith("> "))
+						curLine = curLine.substring(2);
 					if (isArtLine(curLine)) {
 						buffer = curLine;
 						appendText();
 						continue;
-					} else if (curLine.includes("Notified") || curLine.includes("@everyone")) {
+					} else if (curLine.includes("Notified") || curLine.includes("@everyone") || curLine.includes("<@&")) {
 						buffer = "<@666307984644898826>";
 						appendText();
 						continue;
