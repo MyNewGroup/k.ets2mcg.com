@@ -150,7 +150,7 @@ $(document).ready(() => {
                 data: JSON.stringify({
                     file: {
                         url: url
-                    }
+                    } 
                 }),
                 contentType: "application/json",
                 success: () => {
