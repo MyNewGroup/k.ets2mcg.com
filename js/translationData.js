@@ -141,6 +141,7 @@ $(document).ready(() => {
     $("#postTrip").click(() => {
         var webhook = $("#token").val();
         $.ajax({
+            url: webhook,
             method: "POST",
             async: true,
             cache: false,
