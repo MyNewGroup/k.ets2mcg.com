@@ -152,6 +152,10 @@ $(document).ready(() => {
 
     $("#postTrip").click(() => {
         var webhook = $("#token").val();
+        if(webhook.length < 20) {
+            alert("Wrong webhook url");
+            return;
+        }
         var files = $("#files").val().trim().split("\n");
         if($("#files").val().trim().length == 0) {
             files = [];
