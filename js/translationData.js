@@ -182,6 +182,7 @@ $(document).ready(() => {
             sendImage(files[index++]);
             setTimeout(sendOne, 1200);
         }
+        sendOne();
     })
 
     $("#process").click(() => {
