@@ -162,17 +162,44 @@ $(document).ready(() => {
                 content: JSON.stringify({
                     text: $("#result").val(),
                     convoy: $("#isConvoy").text() === "CONVOY",
-                    images: files
+                    images: files.splice(0, Math.min(5, files.length))
                 })
             }),
             contentType: "application/json",
             success: () => {
-                
             },
             error: () => {
                 alert("Error!");
             }
         })
+        function ddd() {
+            if(files.length <= 0) {
+                alert("Finished");
+                return;
+            }
+            $.ajax({
+                url: webhook,
+                method: "POST",
+                async: true,
+                cache: false,
+                data: JSON.stringify({
+                    content: JSON.stringify({
+                        text: "",
+                        convoy: $("#isConvoy").text() === "CONVOY",
+                        images: files.splice(0, Math.min(5, files.length))
+                    })
+                }),
+                contentType: "application/json",
+                success: () => {
+                    
+                },
+                error: () => {
+                    alert("Error!");
+                }
+            })
+            setTimeout(ddd, 1500);
+        }
+        ddd();
     })
 
     $("#process").click(() => {
