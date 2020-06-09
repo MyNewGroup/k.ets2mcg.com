@@ -139,35 +139,31 @@ $(document).ready(() => {
         document.body.removeChild(el);
     })
 
+    $("#isConvoy").click(() => {
+        var d = $("#isConvoy");
+        if(d.text() === "CONVOY") {
+            d.text("TRIP")
+            d.css("background-color", "green");
+        } else {
+            d.text("CONVOY")
+            d.css("background-color", "tomato");
+        }
+    })
+
     $("#postTrip").click(() => {
         var webhook = $("#token").val();
-        function sendImage(url) {
-            $.ajax({
-                url: webhook,
-                method: "POST",
-                async: true,
-                cache: false,
-                data: JSON.stringify({
-                    file: {
-                        url: url
-                    } 
-                }),
-                contentType: "application/json",
-                success: () => {
-                    
-                },
-                error: () => {
-                    alert("Error!");
-                }
-            })
-        }
+        var files = $("#files").val().trim().split("\n");
         $.ajax({
             url: webhook,
             method: "POST",
             async: true,
             cache: false,
             data: JSON.stringify({
-                content: $("#result").val() 
+                content: JSON.stringify({
+                    text: $("#result").val(),
+                    convoy: $("#isConvoy").text() === "CONVOY",
+                    images: files
+                })
             }),
             contentType: "application/json",
             success: () => {
@@ -177,17 +173,6 @@ $(document).ready(() => {
                 alert("Error!");
             }
         })
-        var index = 0;
-        var files = $("#files").val().trim().split("\n");
-        function sendOne() {
-            if(index >= files.length) {
-                alert("Posted ALL!");
-                return;
-            }
-            sendImage(files[index++]);
-            setTimeout(sendOne, 1200);
-        }
-        sendOne();
     })
 
     $("#process").click(() => {
