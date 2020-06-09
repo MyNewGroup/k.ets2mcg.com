@@ -136,7 +136,7 @@ $(document).ready(() => {
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el);
-    }) 
+    })
 
     $("#postTrip").click(() => {
         var webhook = $("#token").val();
