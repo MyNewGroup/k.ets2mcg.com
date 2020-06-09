@@ -241,6 +241,9 @@ $(document).ready(() => {
                 appendText();
                 continue;
             } else if (curLine.includes("★") && (curLine.includes("Convoy") || curLine.includes("DLC") || curLine.includes("Trip"))) {
+                if(!curLine.includes("**")) {
+                    curLine = "**" + curLine + "**";
+                }
                 buffer = curLine;
                 appendText();
                 continue;
