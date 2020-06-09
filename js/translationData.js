@@ -151,7 +151,11 @@ $(document).ready(() => {
     })
 
     $("#addUrlBtn").click(() => {
-        $("#files").val($("#files").val() + "\n" + $("#addUrl").val());
+        if($("#files").val().length == 0) {
+            $("#files").val($("#files").val() + $("#addUrl").val());
+        } else {
+            $("#files").val($("#files").val() + "\n" + $("#addUrl").val());
+        }
         $("#addUrl").val("");
     })
 
