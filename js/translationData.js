@@ -180,6 +180,7 @@ $(document).ready(() => {
         function sendOne() {
             if(index >= files.length) {
                 alert("Posted ALL!");
+                return;
             }
             sendImage(files[index++]);
             setTimeout(sendOne, 1200);
