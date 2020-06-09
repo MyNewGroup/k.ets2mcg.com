@@ -166,6 +166,7 @@
 		put("Port Calais", "칼레 항구");
 		put("Port dover", "도버 항구");
 		put("Port Dover", "도버 항구");
+		put("Hotel", "호텔");
 
 		//Month Names
 		put("January", "01");
@@ -248,10 +249,15 @@
 				}
 
 				var lines = text.split('\n');
+				var timeSkip = false;
 				for (let i = 0; i < lines.length; i++) {
 					let curLine = lines[i];
 					if (curLine.startsWith("> "))
 						curLine = curLine.substring(2);
+
+					if (timeSkip && curLine.startsWith("-")) continue;
+					else if (timeSkip) timeSkip = false;
+
 					if (isArtLine(curLine)) {
 						buffer = curLine;
 						appendText();
@@ -328,6 +334,7 @@
 					} else if (curLine.startsWith("Classic:")) {
 						curLine = "(섀시라고 써야되는데 또 클래식이라 썼음)클래식:" + curLine.substring(8);
 					} else if (curLine.startsWith("Time:")) {
+						timeSkip = true;
 						curLine = "시간: 22:00";
 						buffer = curLine;
 						appendText();
