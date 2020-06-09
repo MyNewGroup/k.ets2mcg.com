@@ -152,7 +152,7 @@ $(document).ready(() => {
                 }),
                 contentType: "application/json",
                 success: () => {
-                    alert("Posted!");
+                    
                 },
                 error: () => {
                     alert("Error!");
@@ -169,7 +169,7 @@ $(document).ready(() => {
             }),
             contentType: "application/json",
             success: () => {
-                alert("Posted!");
+                
             },
             error: () => {
                 alert("Error!");
@@ -178,7 +178,9 @@ $(document).ready(() => {
         var index = 0;
         var files = $("#files").val().trim().split("\n");
         function sendOne() {
-            if(index >= files.length) return;
+            if(index >= files.length) {
+                alert("Posted ALL!");
+            }
             sendImage(files[index++]);
             setTimeout(sendOne, 1200);
         }
