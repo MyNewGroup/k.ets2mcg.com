@@ -153,6 +153,9 @@ $(document).ready(() => {
     $("#postTrip").click(() => {
         var webhook = $("#token").val();
         var files = $("#files").val().trim().split("\n");
+        if($("#files").val().trim().length == 0) {
+            files = [];
+        }
         $.ajax({
             url: webhook,
             method: "POST",
