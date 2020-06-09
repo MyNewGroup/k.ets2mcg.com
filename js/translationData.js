@@ -146,7 +146,7 @@ $(document).ready(() => {
             async: true,
             cache: false,
             data: JSON.stringify({
-                content: $("#result").val()
+                content: $("#result").val() 
             }),
             contentType: "application/json",
             success: () => {
