@@ -109,7 +109,6 @@ class Translator {
 
 const artChars = "▀█";
 const translator = new Translator();
-const resultDiv = $("#result");
 
 function isArtLine(text) {
     var strText = "";
@@ -122,6 +121,7 @@ function isArtLine(text) {
     return false;
 }
 $(document).ready(() => {
+    var resultDiv = $("#result");
     $(".emojiIncluded").each((_, elem) => {
         twemoji.parse(elem), {
             folder: 'svg',
@@ -140,6 +140,24 @@ $(document).ready(() => {
 
     $("#postTrip").click(() => {
         var webhook = $("#token").val();
+        function sendImage(url) {
+            $.ajax({
+                url: webhook,
+                method: "POST",
+                async: true,
+                cache: false,
+                data: JSON.stringify({
+                    file: url
+                }),
+                contentType: "application/json",
+                success: () => {
+                    alert("Posted!");
+                },
+                error: () => {
+                    alert("Error!");
+                }
+            })
+        }
         $.ajax({
             url: webhook,
             method: "POST",
@@ -156,6 +174,13 @@ $(document).ready(() => {
                 alert("Error!");
             }
         })
+        var index = 0;
+        var files = $("#files").val().trim().split("\n");
+        function sendOne() {
+            if(index >= files.length) return;
+            sendImage(files[index++]);
+            setTimeout(sendOne, 1200);
+        }
     })
 
     $("#process").click(() => {
@@ -167,6 +192,7 @@ $(document).ready(() => {
         var buffer = "";
 
         function appendText() {
+            console.log(buffer);
             resultDiv.val(resultDiv.val() + buffer.trim() + "\n");
             buffer = "";
         }
