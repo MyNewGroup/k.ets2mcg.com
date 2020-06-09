@@ -264,7 +264,7 @@ $(document).ready(() => {
                 }
             } else if (curLine.startsWith("Route:")) {
                 curLine = "경로:" + curLine.substring(6);
-            } else if (curLine.startsWith("Start:")) {
+            } else if (curLine.startsWith("Start:")) { 
                 curLine = "출발:" + curLine.substring(6);
             } else if (curLine.startsWith("Stop:")) {
                 curLine = "정차:" + curLine.substring(5);
