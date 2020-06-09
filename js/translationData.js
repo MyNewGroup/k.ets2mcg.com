@@ -233,11 +233,11 @@ $(document).ready(() => {
                 } else if (dayName === "saturday") {
                     dayName = "토요일";
                 }
-                buffer = "★ ETS2MCG " + dayName + " 여행 ★";
+                buffer = "**★ ETS2MCG " + dayName + " 여행 ★**";
                 appendText();
                 continue;
             } else if (curLine.includes("ETS2MCG Team Convoy")) {
-                buffer = "★ ETS2MCG 팀 컨보이 ★";
+                buffer = "**★ ETS2MCG 팀 컨보이 ★**";
                 appendText();
                 continue;
             } else if (curLine.includes("★") && (curLine.includes("Convoy") || curLine.includes("DLC") || curLine.includes("Trip"))) {
