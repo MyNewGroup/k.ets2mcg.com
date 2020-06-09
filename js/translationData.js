@@ -151,9 +151,11 @@ $(document).ready(() => {
     })
 
     $("#postTrip").click(() => {
+        $("#postTrip").text("UPLOADING");
         var webhook = $("#token").val();
         if(webhook.length < 20) {
             alert("Wrong webhook url");
+            $("#postTrip").text("UPLOAD");
             return;
         }
         var files = $("#files").val().trim().split("\n");
@@ -182,6 +184,7 @@ $(document).ready(() => {
         function ddd() {
             if(files.length <= 0) {
                 alert("Finished");
+                $("#postTrip").text("UPLOAD");
                 return;
             }
             $.ajax({
