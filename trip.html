@@ -266,7 +266,7 @@
 					if (curLine.startsWith("> "))
 						curLine = curLine.substring(2);
 
-					if (timeSkip && curLine.startsWith("-")) continue;
+					if (timeSkip && curLine.startsWith("- ")) continue;
 					else if (timeSkip) timeSkip = false;
 
 					if (isArtLine(curLine)) {
@@ -349,7 +349,7 @@
 						curLine = "시간: 22:00";
 						buffer = curLine;
 						appendText();
-						break;
+						continue;
 					} else if (curLine.startsWith("- Truck: ")) {
 						curLine = "- 트럭: " + curLine.substring(9);
 					} else if (curLine.startsWith("- Trailer: ")) {
