@@ -123,6 +123,7 @@ function isArtLine(text) {
 }
 $(document).ready(() => {
     var resultDiv = $("#result");
+    var files = [];
     $(".emojiIncluded").each((_, elem) => {
         twemoji.parse(elem), {
             folder: 'svg',
@@ -151,25 +152,32 @@ $(document).ready(() => {
     })
 
     $("#addUrlBtn").click(() => {
-        if($("#files").val().length == 0) {
-            $("#files").val($("#files").val() + $("#addUrl").val());
-        } else {
-            $("#files").val($("#files").val() + "\n" + $("#addUrl").val());
-        }
+        let text = $("#addUrl").val();
         $("#addUrl").val("");
+        if(text.trim().length == 0) {
+            alert("NO URL SPECIFIED");
+            return;
+        }
+        let arr = text.trim().split("\n");
+        for(let i=0;i<arr.length;i++) {
+            files.push(arr[i]);
+        }
+        $("#urlCount").text("Photo URLs: " + files.length);
+    })
+
+    $("#clearUrlBtn").click(() => {
+        files = [];
+        $("#urlCount").text("Photo URLs: " + files.length);
     })
 
     $("#postTrip").click(() => {
         $("#postTrip").text("UPLOADING");
+        var files0 = files;
         var webhook = $("#token").val();
         if(webhook.length < 20) {
             alert("Wrong webhook url");
             $("#postTrip").text("UPLOAD");
             return;
-        }
-        var files = $("#files").val().trim().split("\n");
-        if($("#files").val().trim().length == 0) {
-            files = [];
         }
         $.ajax({
             url: webhook,
@@ -180,9 +188,10 @@ $(document).ready(() => {
                 content: JSON.stringify({
                     text: $("#result").val(),
                     convoy: $("#isConvoy").text() === "CONVOY",
-                    images: files.splice(0, Math.min(5, files.length))
+                    images: files0.splice(0, Math.min(5, files0.length))
                 })
             }),
+            async: false,
             contentType: "application/json",
             success: () => {
             },
@@ -191,7 +200,7 @@ $(document).ready(() => {
             }
         })
         function ddd() {
-            if(files.length <= 0) {
+            if(files0.length <= 0) {
                 alert("Finished");
                 $("#postTrip").text("UPLOAD");
                 return;
@@ -205,9 +214,10 @@ $(document).ready(() => {
                     content: JSON.stringify({
                         text: "",
                         convoy: $("#isConvoy").text() === "CONVOY",
-                        images: files.splice(0, Math.min(5, files.length))
+                        images: files0.splice(0, Math.min(5, files0.length))
                     })
                 }),
+                async: false,
                 contentType: "application/json",
                 success: () => {
                     
