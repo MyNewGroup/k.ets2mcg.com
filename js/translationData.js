@@ -148,7 +148,9 @@ $(document).ready(() => {
                 async: true,
                 cache: false,
                 data: JSON.stringify({
-                    file: url
+                    file: {
+                        url: url
+                    }
                 }),
                 contentType: "application/json",
                 success: () => {
