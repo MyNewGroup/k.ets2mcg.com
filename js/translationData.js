@@ -150,6 +150,11 @@ $(document).ready(() => {
         }
     })
 
+    $("#addUrlBtn").click(() => {
+        $("#files").val($("#files").val() + "\n" + $("#addUrl").val());
+        $("#addUrl").val("");
+    })
+
     $("#postTrip").click(() => {
         $("#postTrip").text("UPLOADING");
         var webhook = $("#token").val();
