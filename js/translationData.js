@@ -172,7 +172,7 @@ $(document).ready(() => {
 
     $("#postTrip").click(() => {
         $("#postTrip").text("UPLOADING");
-        var files0 = files;
+        var files0 = files.slice(0);
         var webhook = $("#token").val();
         if(webhook.length < 20) {
             alert("Wrong webhook url");
