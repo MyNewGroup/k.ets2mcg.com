@@ -147,6 +147,7 @@ $(document).ready(() => {
             data: JSON.stringify({
                 content: $("#result").val()
             }),
+            contentType: "application/json",
             success: () => {
                 alert("Posted!");
             },
