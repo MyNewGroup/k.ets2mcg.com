@@ -35,6 +35,7 @@ class Translator {
         put("Graz", "그라츠");
         put("Hamburg", "함부르크");
         put("Hannover", "하노버");
+        put("Hanover", "하노버");
         put("Innsbruck", "인스브루크");
         put("Klagenfurt", "클라겐푸르트");
         put("Lille", "릴");
