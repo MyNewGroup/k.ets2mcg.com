@@ -237,6 +237,7 @@ $(document).ready(() => {
 
         var text = "";
         text = $("#input").val().trim();
+        $("#result").val("");
 
         var buffer = "";
 
