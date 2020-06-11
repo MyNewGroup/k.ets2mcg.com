@@ -261,7 +261,7 @@ $(document).ready(() => {
                 buffer = curLine;
                 appendText();
                 continue;
-            } else if (curLine.includes("Notified") || curLine.includes("@everyone") || curLine.includes("<@&")) {
+            } else if (curLine.includes("Notified") || curLine.includes("Members") || curLine.includes("@everyone") || curLine.includes("<@&")) {
                 buffer = "<@&666307984644898826>";
                 appendText();
                 continue;
