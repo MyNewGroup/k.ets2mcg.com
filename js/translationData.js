@@ -386,18 +386,30 @@ $(document).ready(() => {
             $("#postTrip").text("게시!");
             return;
         }
+        var imageSizeOnce = 20;
+        function getMessageContent() {
+            return JSON.stringify({
+                content: JSON.stringify({
+                    text: $("#result").val(),
+                    convoy: $("#isConvoy").text() === "컨보이 채널에 올리기",
+                    images: files0.splice(0, Math.min(imageSizeOnce, files0.length))
+                })
+            });
+        }
+        while (getMessageContent().length > 1000) {
+            imageSizeOnce--;
+            if (imageSizeOnce == 1) {
+                alert("URL이 지나치게 깁니다.");
+                $("#postTrip").text("게시!");
+                return;
+            }
+        }
         $.ajax({
             url: webhook,
             method: "POST",
             async: true,
             cache: false,
-            data: JSON.stringify({
-                content: JSON.stringify({
-                    text: $("#result").val(),
-                    convoy: $("#isConvoy").text() === "컨보이 채널에 올리기",
-                    images: files0.splice(0, Math.min(6, files0.length))
-                })
-            }),
+            data: getMessageContent(),
             async: false,
             contentType: "application/json",
             success: () => {
@@ -412,18 +424,22 @@ $(document).ready(() => {
                 $("#postTrip").text("게시!");
                 return;
             }
+            imageSizeOnce = 20;
+            while (getMessageContent().length > 1000) {
+                imageSizeOnce--;
+                if (imageSizeOnce == 1) {
+                    alert("URL이 지나치게 깁니다.");
+                    $("#postTrip").text("게시!");
+                    return;
+                }
+            }
+
             $.ajax({
                 url: webhook,
                 method: "POST",
                 async: true,
                 cache: false,
-                data: JSON.stringify({
-                    content: JSON.stringify({
-                        text: "",
-                        convoy: $("#isConvoy").text() === "컨보이 채널에 올리기",
-                        images: files0.splice(0, Math.min(6, files0.length))
-                    })
-                }),
+                data: getMessageContent(),
                 async: false,
                 contentType: "application/json",
                 success: () => {
