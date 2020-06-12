@@ -396,7 +396,7 @@ $(document).ready(() => {
                 })
             });
         }
-        while (getMessageContent(false).length > 800) {
+        while (getMessageContent(false).length > 1800) {
             imageSizeOnce--;
             if (imageSizeOnce == 1) {
                 alert("URL이 지나치게 깁니다.");
@@ -425,7 +425,7 @@ $(document).ready(() => {
                 return;
             }
             imageSizeOnce = 20;
-            while (getMessageContent(false).length > 800) {
+            while (getMessageContent(false).length > 1800) {
                 imageSizeOnce--;
                 if (imageSizeOnce == 1) {
                     alert("URL이 지나치게 깁니다.");
