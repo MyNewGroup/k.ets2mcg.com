@@ -387,16 +387,16 @@ $(document).ready(() => {
             return;
         }
         var imageSizeOnce = 20;
-        function getMessageContent() {
+        function getMessageContent(affectList) {
             return JSON.stringify({
                 content: JSON.stringify({
                     text: $("#result").val(),
                     convoy: $("#isConvoy").text() === "컨보이 채널에 올리기",
-                    images: files0.splice(0, Math.min(imageSizeOnce, files0.length))
+                    images: affectList ? files0.splice(0, Math.min(imageSizeOnce, files0.length)) : files0.slice(0, Math.min(imageSizeOnce, files0.length))
                 })
             });
         }
-        while (getMessageContent().length > 800) {
+        while (getMessageContent(false).length > 800) {
             imageSizeOnce--;
             if (imageSizeOnce == 1) {
                 alert("URL이 지나치게 깁니다.");
@@ -409,7 +409,7 @@ $(document).ready(() => {
             method: "POST",
             async: true,
             cache: false,
-            data: getMessageContent(),
+            data: getMessageContent(true),
             async: false,
             contentType: "application/json",
             success: () => {
@@ -425,7 +425,7 @@ $(document).ready(() => {
                 return;
             }
             imageSizeOnce = 20;
-            while (getMessageContent().length > 800) {
+            while (getMessageContent(false).length > 800) {
                 imageSizeOnce--;
                 if (imageSizeOnce == 1) {
                     alert("URL이 지나치게 깁니다.");
@@ -439,7 +439,7 @@ $(document).ready(() => {
                 method: "POST",
                 async: true,
                 cache: false,
-                data: getMessageContent(),
+                data: getMessageContent(true),
                 async: false,
                 contentType: "application/json",
                 success: () => {
