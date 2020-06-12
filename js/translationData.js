@@ -420,7 +420,7 @@ $(document).ready(() => {
                 data: JSON.stringify({
                     content: JSON.stringify({
                         text: "",
-                        convoy: $("#isConvoy").text() === "CONVOY",
+                        convoy: $("#isConvoy").text() === "컨보이 채널에 올리기",
                         images: files0.splice(0, Math.min(7, files0.length))
                     })
                 }),
