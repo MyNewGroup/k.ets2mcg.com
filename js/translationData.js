@@ -395,7 +395,7 @@ $(document).ready(() => {
                 content: JSON.stringify({
                     text: $("#result").val(),
                     convoy: $("#isConvoy").text() === "컨보이 채널에 올리기",
-                    images: files0.splice(0, Math.min(7, files0.length))
+                    images: files0.splice(0, Math.min(6, files0.length))
                 })
             }),
             async: false,
@@ -409,7 +409,7 @@ $(document).ready(() => {
         function ddd() {
             if (files0.length <= 0) {
                 alert("Finished");
-                $("#postTrip").text("UPLOAD");
+                $("#postTrip").text("게시!");
                 return;
             }
             $.ajax({
@@ -421,7 +421,7 @@ $(document).ready(() => {
                     content: JSON.stringify({
                         text: "",
                         convoy: $("#isConvoy").text() === "컨보이 채널에 올리기",
-                        images: files0.splice(0, Math.min(7, files0.length))
+                        images: files0.splice(0, Math.min(6, files0.length))
                     })
                 }),
                 async: false,
