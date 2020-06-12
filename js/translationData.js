@@ -350,10 +350,10 @@ $(document).ready(() => {
     $("#isConvoy").click(() => {
         var d = $("#isConvoy");
         if (d.text() === "CONVOY") {
-            d.text("TRIP")
+            d.text("여행 채널에 올리기")
             d.css("background-color", "green");
         } else {
-            d.text("CONVOY")
+            d.text("컨보이 채널에 올리기")
             d.css("background-color", "tomato");
         }
     })
@@ -362,28 +362,28 @@ $(document).ready(() => {
         let text = $("#addUrl").val();
         $("#addUrl").val("");
         if (text.trim().length == 0) {
-            alert("NO URL SPECIFIED");
+            alert("설정한 URL이 없습니다.");
             return;
         }
         let arr = text.trim().split("\n");
         for (let i = 0; i < arr.length; i++) {
             files.push(arr[i]);
         }
-        $("#urlCount").text("Photo URLs: " + files.length);
+        $("#urlCount").text("사진 URL 개수: " + files.length);
     })
 
     $("#clearUrlBtn").click(() => {
         files = [];
-        $("#urlCount").text("Photo URLs: " + files.length);
+        $("#urlCount").text("사진 URL 개수: " + files.length);
     })
 
     $("#postTrip").click(() => {
-        $("#postTrip").text("UPLOADING");
+        $("#postTrip").text("게시 중...");
         var files0 = files.slice(0);
         var webhook = $("#token").val();
         if (webhook.length < 20) {
-            alert("Wrong webhook url");
-            $("#postTrip").text("UPLOAD");
+            alert("디스코드 웹훅 URl이 잘못되었습니다.");
+            $("#postTrip").text("게시!");
             return;
         }
         $.ajax({
@@ -394,7 +394,7 @@ $(document).ready(() => {
             data: JSON.stringify({
                 content: JSON.stringify({
                     text: $("#result").val(),
-                    convoy: $("#isConvoy").text() === "CONVOY",
+                    convoy: $("#isConvoy").text() === "컨보이 채널에 올리기",
                     images: files0.splice(0, Math.min(7, files0.length))
                 })
             }),
