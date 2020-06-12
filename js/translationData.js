@@ -56,6 +56,7 @@ class Translator {
         put("Szczecin", "슈체친");
         put("Venice", "베네치아");
         put("Verona", "베로나");
+        put("Vienna", "빈");
         put("Zurich", "취리히");
         put("Stuttgart", "슈투트가르트");
 
