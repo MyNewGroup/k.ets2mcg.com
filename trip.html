@@ -137,19 +137,20 @@
 
 <body>
 	<div class="page">
-		<h1 class="emojiIncluded">Auto trip translator for MCG 🇰🇷</h1>
-		<h2>Trip Route Text Here</h2>
-		<textarea id="input" class="pageBlock" placeholder="Put trip route text here"></textarea>
-		<button id="process" type="submit" class="marginVert pageBlock">Process!</button>
+		<h1 class="emojiIncluded">ETS2MCG 🇰🇷 컨보이 경로 자동 번역&업로드</h1>
+		<h2>경로 텍스트 붙여넣기:</h2>
+		<textarea id="input" class="pageBlock" placeholder="경로 텍스트 붙여넣기"></textarea>
+		<label><input id="useKoreanText" type="checkbox" checked />도시 이름을 한국어로 번역(해제 시 영문이 아닌 해당 국가 문자로 표기)</label>
+		<button id="process" type="submit" class="marginVert pageBlock">번역</button>
 		<div id="onFinish" style="display: none;">
-			<h2>Result here</h2>
+			<h2>변역 결과</h2>
 			<textarea id="result" class="pageBlock" style="display: block;"
-				placeholder="Result will be here"></textarea>
-			<button id="copy" type="submit" style="display: block;" class="marginVert pageBlock">Copy!</button>
-			<label style="width: 100%;">Webhook URL: </label>
+				placeholder="이곳에 결과가 표시됩니다."></textarea>
+			<button id="copy" type="submit" style="display: block;" class="marginVert pageBlock">내용 복사</button>
+			<label style="width: 100%;">디스코드 웹훅 URL: </label>
 			<input type="password" id="token" style="width: 100%;" />
-			<button style="width: 100%; background-color: green;" id="isConvoy">TRIP</button>
-			<label style="width: 100%" id="urlCount">Photo URLs: 0</label>
+			<button style="width: 100%; background-color: green;" id="isConvoy">여행 채널에 올리기</button>
+			<label style="width: 100%" id="urlCount">사진 URL 개수: 0</label>
 			<textarea id="addUrl" class="pageBlock" style="display: block;"
 				placeholder="Add Url, Use Line Break"></textarea>
 			<button style="width: 100%; background-color: gray;" id="addUrlBtn">ADD</button>
