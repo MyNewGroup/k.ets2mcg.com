@@ -272,7 +272,8 @@ class Translator {
         put("Port Calais", "칼레 항구");
         put("Port dover", "도버 항구");
         put("Port Dover", "도버 항구");
-        put("Hotel", "호텔");
+        put("(Hotel)", "(호텔)");
+        put("(Port)", "(항구)");
 
         //Month Names
         put("January", "01");
