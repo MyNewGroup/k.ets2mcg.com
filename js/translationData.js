@@ -567,7 +567,7 @@ $(document).ready(() => {
             } else if (curLine.startsWith("- Trailer: ")) {
                 curLine = "- 트레일러: " + curLine.substring(11);
             } else if (curLine.includes("Truck") && curLine.includes("Trailer") && curLine.includes("Skin") && curLine.includes("Free")) {
-                curLine = "트럭, 트레일러, 스킨: 자유 (MCG Korea 스킨 사용 가능 <#703089691863285821>)";
+                curLine = "트럭, 트레일러, 스킨: 자유";
             }
 
             curLine = translator.translate(curLine);
