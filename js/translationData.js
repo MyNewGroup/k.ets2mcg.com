@@ -1,7 +1,7 @@
 class GameCity {
-    cityName;
-    cityNameEng;
-    cityNameLoc;
+    cityName = undefined;
+    cityNameEng = undefined;
+    cityNameLoc = undefined;
 }
 const cities = new Map();
 function city(cn, cne, cnl) {
