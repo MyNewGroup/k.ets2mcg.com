@@ -64,6 +64,7 @@ class Translator {
         city("Brest", "Brest", "브레스트")
         city("Brno", "Brno", "브르노")
         city("Brussel", "Brussels", "브뤼셀")
+        city("Brussel", "Brussel", "브뤼셀")
         city("București", "Bucharest", "부쿠레슈티")
         city("Budapest", "Budapest", "부다페스트")
         city("Бургас", "Burgas", "부르가스")
