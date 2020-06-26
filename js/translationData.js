@@ -472,8 +472,10 @@ $(document).ready(() => {
         var timeSkip = false;
         for (let i = 0; i < lines.length; i++) {
             let curLine = lines[i];
+            curLine = curLine.trim();
             if (curLine.startsWith("> "))
                 curLine = curLine.substring(2);
+            curLine = curLine.trim();
 
             if (timeSkip && curLine.startsWith("- ")) continue;
             else if (timeSkip) timeSkip = false;
