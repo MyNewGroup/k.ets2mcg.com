@@ -299,10 +299,13 @@ class Translator {
         put("White", "흰색");
         put("Yellow", "노란색");
         put("Gray", "회색");
+        put("Purple", "보라색");
 
         //Other Texts
         put("(Gas Station)", "(주유소)");
         put("Point 1 and 3", "1, 3 포인트");
+        put("Convoy Leader:", "컨보이 리더:");
+        put("Convoy Tail:", "컨보이 후방:");
 
         // Sentences
         put("Rules", "규칙");
