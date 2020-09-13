@@ -380,7 +380,6 @@ $(document).ready(() => {
     })
 
     $("#postTrip").click(() => {
-        $("#postTrip").text("게시 중...");
         var files0 = files.slice(0);
         var webhook = $("#token").val();
         if (webhook.length < 20) {
