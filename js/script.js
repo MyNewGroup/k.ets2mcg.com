@@ -16,9 +16,20 @@ function put(key, value) {
 function value(key) {
     return keywords.get(key);
 }
-var useOriginalCityName = false;
+
 class Translator {
-    translate(original) {
+    artChars = "▀█";
+    isArtLine(text) {
+        var strText = "";
+        strText = text;
+        for (let i = 0; i < strText.length; i++) {
+            if (artChars.includes(strText.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+    translateLine(original, useOriginalCityName = false) {
         var text0 = original;
         text0 = original;
         for (let v of keywords.keys()) {
@@ -317,20 +328,8 @@ class Translator {
         put("Wait for people to come and take photos", "모든 사람들이 도착해 사진을 찍을 때 까지 기다립니다");
     }
 }
-
-const artChars = "▀█";
 const translator = new Translator();
 
-function isArtLine(text) {
-    var strText = "";
-    strText = text;
-    for (let i = 0; i < strText.length; i++) {
-        if (artChars.includes(strText.charAt(i))) {
-            return true;
-        }
-    }
-    return false;
-}
 $(document).ready(() => {
     var resultDiv = $("#result");
     var files = [];
@@ -577,7 +576,7 @@ $(document).ready(() => {
                 curLine = "트럭, 트레일러, 스킨: 자유";
             }
 
-            curLine = translator.translate(curLine);
+            curLine = translator.translateLine(curLine);
             buffer = curLine;
             appendText();
         }

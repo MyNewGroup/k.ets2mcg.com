@@ -7,7 +7,7 @@
 	<meta name="theme-color" content="#f7d331">
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
-	<script src="js/translationData.js"></script>
+	<script src="js/script.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 		rel="stylesheet">
 	<style>
@@ -137,7 +137,7 @@
 
 <body>
 	<div class="page">
-		<h1 class="emojiIncluded">ETS2MCG 🇰🇷 컨보이 경로 자동 번역&업로드</h1>
+		<h1 class="emojiIncluded">ETS2MCG Korea 컨보이 경로 자동 번역&업로드</h1>
 		<h2>경로 텍스트 붙여넣기:</h2>
 		<textarea id="input" class="pageBlock" placeholder="경로 텍스트 붙여넣기"></textarea>
 		<label><input id="useKoreanText" type="checkbox" checked />도시 이름을 한국어로 번역(해제 시 영문이 아닌 해당 국가 문자로 표기)</label>
@@ -145,17 +145,20 @@
 		<div id="onFinish" style="display: none;">
 			<h2>번역 결과</h2>
 			<textarea id="result" class="pageBlock" style="display: block;"
-				placeholder="이곳에 결과가 표시됩니다."></textarea>
+				placeholder="이곳에 결과가 표시됩니다. 오류가 있을 수 있으니 반드시 재차 확인하세요."></textarea>
 			<button id="copy" type="submit" style="display: block;" class="marginVert pageBlock">내용 복사</button>
-			<label style="width: 100%;">디스코드 웹훅 URL: </label>
-			<input type="password" id="token" style="width: 100%;" />
-			<button style="width: 100%; background-color: green;" id="isConvoy">여행 채널에 올리기</button>
-			<label style="width: 100%" id="urlCount">사진 URL 개수: 0</label>
-			<textarea id="addUrl" class="pageBlock" style="display: block;"
-				placeholder="사진 URL을 추가하세요. 줄바꿈으로 구분합니다."></textarea>
-			<button style="width: 100%; background-color: gray;" id="addUrlBtn">URL 추가</button>
-			<button style="width: 100%; background-color: gray;" id="clearUrlBtn">URL 지우기</button>
-			<button style="width: 100%;" id="postTrip">게시!</button>
+			<p><b>안내: </b>업로드 기능은 일시적으로 삭제되었습니다. 직접 게시 바랍니다.</p>
+			<div id="uploader" style="display: none;">
+				<label style="width: 100%;">디스코드 웹훅 URL: </label>
+				<input type="password" id="token" style="width: 100%;" />
+				<button style="width: 100%; background-color: green;" id="isConvoy">여행 채널에 올리기</button>
+				<label style="width: 100%" id="urlCount">사진 URL 개수: 0</label>
+				<textarea id="addUrl" class="pageBlock" style="display: block;"
+					placeholder="사진 URL을 추가하세요. 줄바꿈으로 구분합니다."></textarea>
+				<button style="width: 100%; background-color: gray;" id="addUrlBtn">URL 추가</button>
+				<button style="width: 100%; background-color: gray;" id="clearUrlBtn">URL 지우기</button>
+				<button style="width: 100%;" id="postTrip">게시!</button>
+			</div>
 		</div>
 	</div>
 </body>
