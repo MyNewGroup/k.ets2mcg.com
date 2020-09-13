@@ -484,7 +484,7 @@ $(document).ready(() => {
             if (timeSkip && curLine.startsWith("- ")) continue;
             else if (timeSkip) timeSkip = false;
 
-            if (isArtLine(curLine)) {
+            if (translator.isArtLine(curLine)) {
                 buffer = curLine;
                 appendText();
                 continue;
